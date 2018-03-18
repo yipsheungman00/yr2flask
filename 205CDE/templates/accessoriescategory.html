@@ -1,0 +1,13 @@
+{% extends 'navbar-afterlogin.html' %}
+
+{% block body %}
+    {% for cardinfo in cardinfos %}
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="static/img/{{cardinfo.productPhotoName}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{cardinfo.productName}}</h5>
+        <p class="card-text">{{cardinfo.productDescription}}</p>
+        <a href="product/{{cardinfo.productID}}" class="btn btn-primary">More</a>
+      </div>
+    {% endfor %}
+{% endblock %}

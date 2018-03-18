@@ -1,0 +1,50 @@
+{% extends 'webframework.html' %}
+
+{% block body %}
+ <!--Bootstrap Navigation Bar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark transparent-bg">
+  <!-- Brand part -->
+  <a class="navbar-brand" href="home">Evigate</a>
+  <!-- Hidden button part -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Single link part -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+	  <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="register">Register</a>
+      </li>
+	  <!-- Dropdown list part -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Laptop</a>
+          <a class="dropdown-item" href="#">Convertible</a>
+		  <a class="dropdown-item" href="#">2 in 1</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Accessories</a>
+        </div>
+      </li>
+    </ul>
+	<!-- Icon part -->
+	<ul class="navbar-nav navbar-right expand-hide">
+	  <li><a href="login" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Login"><span><i class="fa fa-user icon-size" aria-hidden="true"></i></span></a></li>
+	  <li><a href="register" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Register"><span><i class="fa fa-sign-in icon-size" aria-hidden="true"></i></span></a></li>
+	</ul>
+	<!-- Search part-->
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+  </nav>
+{% endblock %}

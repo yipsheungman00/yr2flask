@@ -1,0 +1,169 @@
+<!Doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/makeitsafe.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/tabbar.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/navbar-beforelogin.css") }}">
+  <link rel="stylesheet" type="text/css" href="{{ url_for("static", filename="css/loginform2.css") }}">
+	<style>
+		#nav-tab-box {
+	          float: left;
+	          width: 25%;
+	          height:100px;
+	          border-top:1px solid #e0e0e0;
+	          border-left:1px solid #e0e0e0;
+	          border-bottom:1px solid #e0e0e0;
+	          box-sizing: border-box;
+	          background: rgba(0, 0, 0, 0.5);
+	          position:relative;
+	          list-style:none;
+	          left: 0;
+        }
+		
+		.login-bgpic {
+	         background: url("{{ url_for ('static', filename = 'img/ngv1.jpg') }}") no-repeat;
+	         width: 100%;
+	         height: 140vh;
+	         background-size: cover;
+	         background-position: center;
+        }
+        #loginbox {
+	         width: 330px;
+	         height: 430px;
+	         padding: 70px 30px;
+	         background: rgba(0, 0, 0, 0.5);
+	         color: #fff;
+	         margin-top: 30%;
+	         position: absolute;
+	         box-sizing:border-box;
+        }
+        #loginicon {
+	         width: 100px;
+	         height: 100px;
+	         position: absolute;
+	         top: -50px;
+	         left: calc(50% - 50px);
+        }
+        h1 {
+	         margin: 0;
+	         padding: 0 0 20px;
+	         text-align: center;
+	         font-size: 22px;
+        }
+        #loginbox label {
+	         margin: 0;
+	         padding: 0;
+	         font-weight: bold;
+        }
+        #loginbox input {
+	         width: 100%;
+	         margin-bottom: 20px;
+        }
+        #loginbox input[type="email"], input[type="password"], input[type="button"] {
+	         border: none;
+	         outline: none;
+	         background: transparent;
+	         border-bottom: 1px solid #fff;
+	         height: 40px;
+	         color: #fff;
+	         font-size: 16px;
+        }
+        #loginbox input[type="submit"], input[type="button"] {
+	         border: none;
+	         outline: none;
+	         height: 40px;
+	         background: #1c8adb;
+	         color: #fff;
+	         font-size: 18px;
+	         border-radius: 20px;
+	         left: 50%;
+        }
+        #loginbox input[type="submit"]:hover, input[type="button"]:hover {
+	         cursor: pointer;
+	         color: #000;
+	         background: #39dc79;
+        }
+	</style>
+</head>
+<body>
+  <!--Bootstrap Navigation Bar-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-dark transparent-bg">
+  <!-- Brand part -->
+  <a class="navbar-brand" href="home">Evigate</a>
+  <!-- Hidden button part -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- Single link part -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="home">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="login">Login</a>
+      </li>
+	  <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="register">Register</a>
+      </li>
+    </ul>
+	<!-- Icon part -->
+	<ul class="navbar-nav navbar-right expand-hide">
+	  <li><a href="login" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Login"><span><i class="fa fa-user icon-size" aria-hidden="true"></i></span></a></li>
+	  <li><a href="register" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Register"><span><i class="fa fa-sign-in icon-size" aria-hidden="true"></i></span></a></li>
+	</ul>
+  </div>
+  </nav>
+  {% include 'includes/_messages.html' %}
+  <!-- Login Form -->
+  <div class="container-fluid login-bgpic">
+	<div class="row">
+	<div class="col-xs-12 col-sm-4 col-md-4"></div>
+	<div class="col-xs-12 col-sm-4 col-md-4">
+  <div id="loginbox">
+    <img src="{{url_for('static', filename='img/loginicon.png')}}" id="loginicon">
+      <h1>Login here</h1>
+	    <form action="" class="login" method="POST">
+		    <!-- Email part-->
+            <label for="email">E-mail</label><br>
+            <input type="email" name="email" id="email" placeholder="E-Mail" value={{request.form.email}}>
+			<!-- Password part-->
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Password" value={{request.form.password}}>
+          <!-- Login form submit button part-->
+          <input type="submit" value="Login" class="login-submit"><br>
+		  <!--  Redirect to register form button part-->
+          <input type="button" value="Register" onclick="registerClick()" class="login-submit" src="bregisterform.html"><br>
+        </form>
+  </div>
+  </div>
+	<div class="col-xs-12 col-sm-4 col-md-4"></div>
+	</div>
+	</div>
+  <!--Tab bar-->
+  <nav id="nav-tab">
+    <ul>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="home"><i class="fa fa-home" aria-hidden="true"></i><span class="nav-tab-name">HOME</span></a></li>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="login"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="nav-tab-name">ITEMS</span></a></li>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="login"><i class="fa fa-plus" aria-hidden="true"></i><span class="nav-tab-name">SELL</span></a></li>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="login"><i class="fa fa-cog" aria-hidden="true"></i><span class="nav-tab-name">SETTING</span></a></li>
+    </ul>
+  </nav>
+  <!-- Audio play -->
+  <audio autoplay>
+     <source src="{{ url_for('static' , filename='audio/login.mp3')}}" type="audio/mpeg">
+	</audio>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/tooltip.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/tabbar.js') }}"></script>
+	<script>
+		  function registerClick() {
+		      location.href = 'register';
+		  }
+	</script>
+</body>
+</html>

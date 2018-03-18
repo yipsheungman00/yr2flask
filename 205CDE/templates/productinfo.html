@@ -1,0 +1,51 @@
+{% extends 'navbar-afterlogin.html' %}
+
+{% block body %}
+<div class="container-fluid pwdchange-bg">
+  <div class="row">
+	<div class="col-xs-12 col-sm-2 col-md-2"></div>
+	<div class="col-xs-12 col-sm-8 col-md-8">
+<div class="card" style="width: 100%;">
+<a href="{{ url_for('uploaded_file', filename='' + productinfos.productPhotoName) }}"><img class="card-img-top" src="{{url_for('static', filename='img/' + productinfos.productPhotoName)}}"  alt="Responsive image"></a>
+<ul class="list-group list-group-flush">
+	<li class="list-group-item"><h2>{{ productinfos.productName }}</h2></li>
+    <li class="list-group-item">Username: {{ productinfos.username }}</li>
+    <li class="list-group-item">Product price: ${{ productinfos.productPrice }}</li>
+    <li class="list-group-item">Product status: {{ productinfos.productStatus }}</li>
+	<li class="list-group-item">Product category: {{ productinfos.productCategory }}</li>
+	<li class="list-group-item">Product description: {{ productinfos.productDescription }}</li>
+</ul>
+</div>
+{% from "includes/_formchecker.html" import render_field %}
+<form method="POST" action="">	
+<!-- Message topic part -->
+  <div class="form-group">
+    <label for="message-topic">Message Topic:</label>
+    <input type="text" name="message-topic" class="form-control" id="message-topic" placeholder="Message Topic" maxlength="100" required>
+  </div>
+<!-- Message content part -->
+  <div class="form-group">
+    <label for="message-content">Product description:</label>
+    <textarea name="message-content" id="message-content" class="form-control" rows="8" cols="50" maxlength="500"></textarea>
+	<p class="text-right"><span id="word-counter" ></span> word<span class="countable">s</span></p>
+  </div>
+<!-- Message submit button part -->
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<br>
+<h2>Message board</h2>
+{% for discus in discuss %}
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+	<h5 class="card-title">{{discus.username}}</h5>
+    <h5 class="card-title">{{discus.topic}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{discus.date}}</h6>
+    <p class="card-text">{{discus.content}}</p>
+  </div>
+</div>
+{% endfor %}
+</div>
+   <div class="col-xs-12 col-sm-2 col-md-2"></div>
+   </div>
+   </div>
+{% endblock %}

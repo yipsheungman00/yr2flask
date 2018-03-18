@@ -1,0 +1,96 @@
+<!Doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/makeitsafe.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/tabbar.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/home.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/navbar-afterlogin.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/uploadform.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/setting.css") }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for("static", filename="css/item.css") }}">
+	<style>
+		#nav-tab-box {
+	          float: left;
+	          width: 25%;
+	          height:100px;
+	          border-top:1px solid #e0e0e0;
+	          border-left:1px solid #e0e0e0;
+	          border-bottom:1px solid #e0e0e0;
+	          box-sizing: border-box;
+	          background: rgba(0, 0, 0, 0.5);
+	          position:relative;
+	          list-style:none;
+	          left: 0;
+        }
+	</style>
+</head>
+<body>
+  <!--Bootstrap Navigation Bar-->
+  <nav class="navbar navbar-expand-lg navbar-light transparent-bg">
+  <a class="navbar-brand" href="{{ url_for('newhome') }}">Evigate</a>
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{{ url_for('newhome') }}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
+      </li>
+	  <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="{{ url_for('sell') }}">Sell</a>
+      </li>
+	  <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="{{ url_for('setting') }}">Setting</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu transparent-bg" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{{ url_for('laptopcategory') }}">Laptop</a>
+          <a class="dropdown-item" href="{{ url_for('tabletcategory') }}">Tablet</a>
+		  <a class="dropdown-item" href="{{ url_for('twoinonecategory') }}">2 in 1</a>
+          <a class="dropdown-item" href="{{ url_for('accessoriescategory') }}">Accessories</a>
+        </div>
+      </li>
+	  <li class="nav-item expand-show display-none">
+        <a class="nav-link" href="{{ url_for('logout') }}">Sign out</a>
+      </li>
+    </ul>
+	<ul class="navbar-nav navbar-right expand-hide">
+	  <li><a href="{{ url_for('profile') }}" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Profile"><span><i class="fa fa-book icon-size" aria-hidden="true"></i></span></a></li>
+	  <li><a href="{{ url_for('sell') }}" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Sell"><span><i class="fa fa-plus icon-size" aria-hidden="true"></i></span></a></li>
+	  <li><a href="{{ url_for('setting') }}" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Setting"><span><i class="fa fa-cog icon-size" aria-hidden="true"></i></span></a></li>
+	  <li><a href="{{ url_for('logout') }}" class="icon-link" data-toggle="tooltip" data-placement="bottom" title="Logout"><span><i class="fa fa-sign-out icon-size" aria-hidden="true"></i></span></a></li>
+	</ul>
+  </div>
+  </nav>
+  {% include 'includes/_messages.html' %}
+  {% block body %}
+  
+  {% endblock %}
+  <!--Tab bar-->
+  <nav id="nav-tab">
+    <ul>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="{{ url_for('newhome') }}"><i class="fa fa-home" aria-hidden="true"></i><span class="nav-tab-name">HOME</span></a></li>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="{{ url_for('item') }}"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="nav-tab-name">ITEMS</span></a></li>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="{{ url_for('sell') }}"><i class="fa fa-plus" aria-hidden="true"></i><span class="nav-tab-name">SELL</span></a></li>
+      <li id="nav-tab-box"><a id="nav-tab-link" href="{{ url_for('setting') }}"><i class="fa fa-cog" aria-hidden="true"></i><span class="nav-tab-name">SETTING</span></a></li>
+    </ul>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="{{ url_for("static", filename="js/tabbar.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/tooltip.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/uploadform.js") }}"></script>
+  <script src="{{ url_for("static", filename="js/productinfo.js") }}"></script>
+</body>
+</html>

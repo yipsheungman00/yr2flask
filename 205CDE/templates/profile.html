@@ -1,0 +1,35 @@
+{% extends 'navbar-afterlogin.html' %}
+
+{% block body %}
+<div class="alert alert-secondary" role="alert">
+	<h1>Profile</h1>
+</div>
+<div class="alert alert-secondary" role="alert">
+  Username: {{profile.username}}
+</div>
+<div class="alert alert-secondary" role="alert">
+  Gender:   {{profile.gender}}
+</div>
+<div class="alert alert-secondary" role="alert">
+  Date of birth: {{profile.dateOfBirth}}
+</div>
+<div class="alert alert-secondary" role="alert">
+  Email:    {{profile.email}}
+</div>
+<div class='row'>	
+    {% for cardinfo in cardinfos %}
+	<div class='col-sm-4 col-md-2 col-lg-2 col-xs-12'>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src='static/img/{{cardinfo.productPhotoName}}' alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{cardinfo.productName}}</h5>
+        <p class="card-text">{{cardinfo.productDescription}}</p>
+        <a href="product/{{cardinfo.productID}}" class="btn btn-primary">More</a>
+		<a href="editproduct/{{cardinfo.productID}}" class="btn btn-primary">Edit</a>
+		<a href="deleteproduct/{{cardinfo.productID}}" class="btn btn-primary">Delete</a>
+      </div>
+	</div>
+	</div>
+    {% endfor %}
+	</div>
+{% endblock %}

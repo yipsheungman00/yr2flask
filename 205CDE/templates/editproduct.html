@@ -1,0 +1,64 @@
+{% extends 'navbar-afterlogin.html' %}
+
+{% block body %}
+<!-- Upload form -->
+  <div class="container-fluid pwdchange-bg">
+  <div class="row">
+	<div class="col-xs-12 col-sm-2 col-md-2"></div>
+	<div class="col-xs-12 col-sm-8 col-md-8">
+  {% from "includes/_formchecker.html" import render_field %}
+  <form method="POST" action="" class="upload-box" enctype="multipart/form-data">
+  <!-- Product photo part -->
+  <label for="product-photo">Product photo:</label>
+  <div class="custom-file">
+    <input type="file" name="product-photo" class="custom-file-input" id="customFile" required>
+    <label class="custom-file-label" for="customFile">Choose file</label>
+  <div>
+  <!-- Product name part -->
+  <div class="form-group">
+    <label for="product-name">Product name:</label>
+    <input type="text" name="product-name" class="form-control" id="product-name" placeholder="Product name" maxlength="50" required>
+  </div>
+  <!-- Product price part -->
+  <div class="form-group">
+  <label for="product-price">Product price:</label>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">$</span>
+    </div>
+    <input type="text" name="product-price" class="form-control" id="product-price" aria-label="Amount (to the nearest dollar)" maxlength="10" required>
+    <div class="input-group-append">
+      <span class="input-group-text">.00</span>
+    </div>
+  </div>
+  </div>
+  <!-- Product status part -->
+  <div class="form-group">
+    <label for="product-status">Product status:</label>
+    <select name="product-status" class="form-control" id="product-status" required>
+	  <option>--</option>
+      <option value='Brand new'>Brand new</option>
+      <option value='Second hand'>Second hand</option>
+    </select>
+  </div>
+  <!-- Product category part -->
+  <div class="form-group">
+    <label for="product-category">Product category:</label>
+    <select name="product-category" class="form-control" id="product-category" required>
+	  <option>--</option>
+      <option value='Laptop'>Laptop</option>
+      <option value='Tablet'>Tablet</option>
+      <option value='2-in-1'>2 in 1</option>
+      <option value='Accessories'>Accessories</option>
+    </select>
+  </div>
+  <!-- Product description part -->
+  <div class="form-group">
+    <label for="product-description">Product description:</label>
+    <textarea name="product-description" id="product-description" class="form-control" rows="8" cols="50" maxlength="500"></textarea>
+	<p class="text-right"><span id="word-counter" ></span> word<span class="countable">s</span></p>
+  </div>
+  <!-- Upload form submit button part -->
+  <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+{% endblock %}

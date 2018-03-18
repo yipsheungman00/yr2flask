@@ -1,0 +1,22 @@
+.transparent-bg {
+	background: rgba(0, 0, 0, 0.5);
+}
+.icon-size {
+	margin-left: 10px;
+	margin-right: 20px;
+	margin-bottom: 5px;
+}
+.icon-link:hover {
+	text-decoration: none;
+}
+.display-none {
+	display: none;
+}
+@media screen and (max-width: 768px) {
+	.expand-hide {
+		display: none;
+	}
+	.expand-show {
+		display: block;
+	}
+}

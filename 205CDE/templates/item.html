@@ -1,0 +1,40 @@
+{% extends 'navbar-afterlogin.html' %}
+
+{% block body %}
+<nav class="spring-board">
+  <ul style="list-style-type: none; display: flex; flex-wrap: wrap; align-content: flex-start;">
+    <li>
+	 <a href="{{ url_for('laptopcategory') }}">
+	  <span class="icon">
+	   <img src="{{url_for('static', filename='img/laptop.jpg')}}" alt="item">
+	  </span>
+	  <span class="label">Laptop</span>
+	 </a>
+	</li>
+	<li>
+	 <a href="{{ url_for('tabletcategory') }}">
+	  <span class="icon">
+	   <img src="{{url_for('static', filename='img/tablet.jpg')}}" alt="item">
+	  </span>
+	  <span class="label">Tablet</span>
+	 </a>
+	</li>
+	<li>
+	 <a href="{{ url_for('twoinonecategory') }}">
+	  <span class="icon">
+	   <img src="{{url_for('static', filename='img/2in1.jpg')}}" alt="item">
+	  </span>
+	  <span class="label">2-in-1</span>
+	 </a>
+	</li>
+	<li>
+	 <a href="{{ url_for('accessoriescategory') }}">
+	  <span class="icon">
+	   <img src="{{url_for('static', filename='img/accessories.jpg')}}" alt="item">
+	  </span>
+	  <span class="label">Accessories</span>
+	 </a>
+	</li>
+  </ul>
+</nav>
+{% endblock %}
